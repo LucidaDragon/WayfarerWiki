@@ -116,6 +116,11 @@ p
 	box-shadow: none;
 }
 
+.no-display
+{
+	display: none;
+}
+
 @media (orientation: landscape)
 {
 	.toc
