@@ -21,6 +21,8 @@ def delete_path(path: pathlib.Path):
 
 def process_page(entry: pathlib.Path, output: pathlib.Path):
 	name = entry.stem
+	if len(name) > 1: name = name[0].upper() + name[1:]
+
 	with entry.open("rb") as stream:
 		document = xml.etree.ElementTree.parse(stream)
 	root = document.getroot()
@@ -29,6 +31,12 @@ def process_page(entry: pathlib.Path, output: pathlib.Path):
 	if head == None:
 		head = xml.etree.ElementTree.Element("head")
 		root.insert(0, head)
+	
+	body = root.find("body")
+	if body == None: return
+
+	opening_paragraph = body.find("p")
+	opening_image = body.find("img")
 
 	head.clear()
 
@@ -39,14 +47,27 @@ def process_page(entry: pathlib.Path, output: pathlib.Path):
 	title.text = name + " - " + SITE_NAME
 	head.append(title)
 
-	og_title = xml.etree.ElementTree.Element("meta", { "name": "title", "content": name })
+	og_title = xml.etree.ElementTree.Element("meta", { "name": "og:title", "content": name })
 	head.append(og_title)
 
-	og_site_name = xml.etree.ElementTree.Element("meta", { "name": "site_name", "content": SITE_NAME })
+	og_site_name = xml.etree.ElementTree.Element("meta", { "name": "og:site_name", "content": SITE_NAME })
 	head.append(og_site_name)
 
-	og_type = xml.etree.ElementTree.Element("meta", { "name": "type", "content": "article" })
+	og_type = xml.etree.ElementTree.Element("meta", { "name": "og:type", "content": "article" })
 	head.append(og_type)
+
+	author = xml.etree.ElementTree.Element("meta", { "name": "author", "content": "Lucida Dragon" })
+	head.append(author)
+
+	article_author = xml.etree.ElementTree.Element("meta", { "name": "article:author", "content": "Lucida Dragon" })
+	head.append(article_author)
+
+	if opening_paragraph != None and opening_paragraph.text != None:
+		head.append(xml.etree.ElementTree.Element("meta", { "name": "description", "content": opening_paragraph.text }))
+		head.append(xml.etree.ElementTree.Element("meta", { "name": "og:description", "content": opening_paragraph.text }))
+	
+	if opening_image != None and "src" in opening_image.attrib:
+		head.append(xml.etree.ElementTree.Element("meta", { "name": "og:image", "content": opening_image.attrib["src"] }))
 
 	style = xml.etree.ElementTree.Element("link", { "rel": "stylesheet", "href": "global.css" })
 	head.append(style)
