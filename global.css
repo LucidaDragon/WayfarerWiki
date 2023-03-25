@@ -125,6 +125,7 @@ p
 {
 	.toc
 	{
+		max-width: calc(25vw - (var(--table-horizontal-margin) * 2));
 		position: absolute;
 		left: 0;
 	}
