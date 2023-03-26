@@ -116,10 +116,16 @@ p
 	box-shadow: none;
 }
 
+.no-display
+{
+	display: none;
+}
+
 @media (orientation: landscape)
 {
 	.toc
 	{
+		max-width: calc(25vw - (var(--table-horizontal-margin) * 2));
 		position: absolute;
 		left: 0;
 	}
