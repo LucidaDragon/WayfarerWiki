@@ -69,6 +69,7 @@ b
 table, th, td
 {
 	border: var(--line-size) solid var(--text-primary);
+	text-align: center;
 }
 
 table
