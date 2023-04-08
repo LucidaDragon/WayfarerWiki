@@ -1,0 +1,10 @@
+{
+	"filewatcher.commands": [
+		{
+			"match": ".*",
+			"notMatch": "docs",
+			"cmd": "python ${workspaceRoot}/metadata.py",
+			"event": "onFileChange"
+		}
+	]
+}
