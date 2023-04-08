@@ -20,6 +20,7 @@ def delete_path(path: pathlib.Path):
 		path.unlink()
 
 def process_page(entry: pathlib.Path, output: pathlib.Path):
+	print(entry.name)
 	name = entry.stem
 	if len(name) > 1: name = name[0].upper() + name[1:]
 
@@ -37,8 +38,6 @@ def process_page(entry: pathlib.Path, output: pathlib.Path):
 
 	opening_paragraph = body.find("p")
 	opening_image = body.find("img")
-
-	head.clear()
 
 	charset = xml.etree.ElementTree.Element("meta", { "charset": "utf-8" })
 	head.append(charset)
