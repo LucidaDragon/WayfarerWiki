@@ -1,0 +1,17 @@
+<svg viewBox="-0.05 -0.05 2.85 2.85" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<linearGradient id="transition" gradientTransform="rotate(45) translate(0.25 0.25)">
+			<stop offset="20%" stop-color="white"/>
+			<stop offset="80%" stop-color="cornflowerblue"/>
+		</linearGradient>
+	</defs>
+	<path stroke="black" stroke-width="0.05" fill="url('#transition')" d="M 0 0 m 1.25 0.125 l 1.5 1.5 l -1.25 0.875 l -1.5 -1.5 z"/>
+	<path stroke="black" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="0.05" fill="white" d="M 0 0 l 1 0 l 0 1 l -1 0 l 0 -1 m 1 0 l 0.25 0.125 l 0 1 l -0.25 -0.125 m 0.25 0.125 l -1 0 l -0.25 -0.125 l 1 0"/>
+	<path stroke="black" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="0.05" fill="cornflowerblue" d="M 1.5 1.5 l 1 0 l 0 1 l -1 0 l 0 -1 m 1 0 l 0.25 0.125 l 0 1 l -0.25 -0.125 m 0.25 0.125 l -1 0 l -0.25 -0.125 l 1 0"/>
+	<text stroke="black" stroke-width="0.005" fill="white" font-size="0.3" textLength="0.9" transform="translate(0.05, 0.6)">
+		Unreal
+	</text>
+	<text stroke="black" stroke-width="0.005" fill="white" font-size="0.3" textLength="0.6" transform="translate(1.675, 2.1)">
+		Real
+	</text>
+</svg>
